@@ -43,7 +43,7 @@ app.get(("/heart-checkup"), authMiddlewares, (req, res)=>{
     res.status(200).json({
         msg: "Your heart is fine",
     })
-})
+})                                                  
 
 
 app.listen(port, ()=>{
