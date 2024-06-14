@@ -15,6 +15,13 @@ const authMiddlewares = (req, res, next)=>{
         next();
     }
 }
+let request=0;
+const requestCount = (req, res, next) => {
+    request++;
+    console.log(request);
+    next();
+
+}
 
 const inputvalMiddleware = (req, res, next) => {
     const kidneyid = req.query.kidneyid;
@@ -28,7 +35,7 @@ const inputvalMiddleware = (req, res, next) => {
 }
 
 
-app.use(authMiddlewares)
+app.use(authMiddlewares, requestCount)
 
 app.get(('/health-checkup'), inputvalMiddleware, (req,res)=>{
     res.status(200).json({
