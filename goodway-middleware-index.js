@@ -3,6 +3,7 @@ const app = express();
 const port  = 3000;
 
 //middlewares
+
 const authMiddlewares = (req, res, next)=>{
     const username = req.headers.username;
     const password = req.headers.password;
@@ -26,20 +27,22 @@ const inputvalMiddleware = (req, res, next) => {
     }
 }
 
+app.use(express.json());
+app.use(authMiddlewares)
 
-app.get(('/health-checkup'),authMiddlewares, inputvalMiddleware, (req,res)=>{
+app.get(('/health-checkup'), inputvalMiddleware, (req,res)=>{
     res.status(200).json({
         msg: "Your kidney is fine",
     })
 })
 
-app.get(('/kidney-checkup'), authMiddlewares, inputvalMiddleware, (req, res)=>{
+app.get(('/kidney-checkup'), inputvalMiddleware, (req, res)=>{
     res.status(200).json({
         msg: "Your kidney got replaced",
     })
 })
 
-app.get(("/heart-checkup"), authMiddlewares, (req, res)=>{
+app.get(("/heart-checkup"), (req, res)=>{
     res.status(200).json({
         msg: "Your heart is fine",
     })
