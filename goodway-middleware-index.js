@@ -3,7 +3,7 @@ const app = express();
 const port  = 3000;
 
 //middlewares
-
+app.use(express.json());
 const authMiddlewares = (req, res, next)=>{
     const username = req.headers.username;
     const password = req.headers.password;
@@ -27,7 +27,7 @@ const inputvalMiddleware = (req, res, next) => {
     }
 }
 
-app.use(express.json());
+
 app.use(authMiddlewares)
 
 app.get(('/health-checkup'), inputvalMiddleware, (req,res)=>{
