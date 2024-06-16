@@ -1,9 +1,3 @@
-/**
- * Give the user back the token on signin/signup
- * Ask the user to send back the requests
- * when the user signout ask the user to forget the token {or revoke it from backend}
- */
-
 //Assignment  
 
 /**
@@ -12,7 +6,6 @@
  *  . get /users    --> with header : Authorization header   ---> return : all users {if correct/user signed in}
  *                                                                          403 {else}
  */
-
 
 const express = require('express');
 const jwt = require('jsonwebtoken');
@@ -48,6 +41,7 @@ const userExists = (username, password) => {
         }
     }
 }
+
 app.post('/signin', (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
@@ -76,10 +70,7 @@ app.get('/users', (req, res) => {
             }
         })
     })
-
-
 })
-
 
 app.listen(port, ()=>{
     console.log(`Server is listening on port: ${port}...`);
