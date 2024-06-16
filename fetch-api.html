@@ -3,15 +3,18 @@
 
 
 <body>
-  <script>
-    const getAnimalData = async () => {
-      const response = await fetch("https://fakerapi.it/api/v1/persons");
-      const final = await response.json();
-      console.log(final);
-    }
-  </script>
+    <div id="container"></div>
+    <button onclick="getAnimalData()"> Get Animal Data</button>
+    <script>
+        const getAnimalData = async () => {
+        const response = await fetch("https://fakerapi.it/api/v1/persons");
+        const final = await response.json();
+        document.getElementById("container").innerHTML = JSON.stringify(final.data)
+        console.log(final);
+        }
+    </script>
 
-  <button onclick="getAnimalData()"> Get Animal Data</button>
+  
 </body>
 
 </html>
